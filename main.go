@@ -18,6 +18,6 @@ func main() {
 	http.ListenAndServe(":"+port, router)
 }
 
-func index(res http.ResponseWriter, req *http.Request, ps httprouter.Params) {
-
+func index(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
+	http.ServeFile(res, req, "./static/index.html")
 }
