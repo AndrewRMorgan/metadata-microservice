@@ -30,23 +30,24 @@ func index(res http.ResponseWriter, req *http.Request) {
 
 func getFileSize(res http.ResponseWriter, req *http.Request) {
 	file, _, err := req.FormFile("selected-file")
-	check(err) //Need to check why these errors are coming up.
+	check(err)
 	defer file.Close()
 
 	var buff bytes.Buffer
 	fileSize, err := buff.ReadFrom(file)
-	check(err) //Need to check why these errors are coming up.
+	check(err)
 
 	var data metadata
-
 	data.Size = fileSize
 
 	js, err := json.Marshal(data)
-	check(err) //Need to check why these errors are coming up.
+	check(err)
 	res.Header().Set("Content-Type", "application/json")
 	res.Write(js)
 }
 
 func check(err error) {
-	fmt.Printf("Error: %v", err)
+	if err != nil {
+		fmt.Printf("Error: %v", err)
+	}
 }
