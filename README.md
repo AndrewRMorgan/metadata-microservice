@@ -1,4 +1,4 @@
-# FreeCodeCamp API: File Metadata Microservice
+# FreeCodeCamp API Project: File Metadata Microservice
 
 ## User stories:
 1. I can submit a FormData object that includes a file upload.
